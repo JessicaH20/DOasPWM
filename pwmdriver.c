@@ -1,17 +1,14 @@
 
 /*******************************************************************************
-       TITLE:: initial_timer()
-       INPUT:: New frequency 
-      OUTPUT:: None
- DESCRIPTION:: Sets the frequency of PWM on the fly. 
-  REFERENCES:: None
- LIMITATIONS:: This function can be called after PWM outputs have been initialized.
-  		 USAGE:: pwm_channel(0, 150); This will set the pwm frequency to 150Hz
- 			AUTHOR:: Jessica.H
-		    DATE:: 05/05/16
-    REVISION:: -
- REV HISTORY:: -
-        NOTE:: -
+TITLE:: initial_timer()
+INPUT:: New frequency 
+OUTPUT:: None
+REFERENCES:: None
+AUTHOR:: Jessica.H
+DATE:: 05/05/16
+REVISION:: -
+REV HISTORY:: -
+NOTE:: -
 *******************************************************************************/
  void initial_timer()
  {
@@ -63,18 +60,15 @@
 }
 
 /*******************************************************************************
-       TITLE:: pwm_set_frequency()
-       INPUT:: New frequency 
-      OUTPUT:: None
- DESCRIPTION:: Sets the frequency of PWM on the fly. 
-  REFERENCES:: None
- LIMITATIONS:: This function can be called after PWM outputs have been initialized.
-  		 USAGE:: pwm_channel(0, 150); This will set the pwm frequency to 150Hz
- 			AUTHOR:: L. Xiao
-		    DATE:: 11/15/12
-    REVISION:: -
- REV HISTORY:: -
-        NOTE:: -TIM8_CH1-3, TIM3_CH1-4, TIM9_CH1-2, TIM5_CH2-3, TIM4_CH3
+TITLE:: pwm_set_frequency()
+INPUT:: New frequency 
+OUTPUT:: None
+DESCRIPTION:: Sets the frequency of PWM on the fly. 
+REFERENCES:: None
+LIMITATIONS:: This function can be called after PWM outputs have been initialized.
+REVISION:: -
+REV HISTORY:: -
+NOTE::-
 *******************************************************************************/
 void pwm_set_frequency(u8 pwm_channel, u16 pwm_frequency)
 {
@@ -82,7 +76,7 @@ u16 temp_u16;
 
   switch(pwm_channel)
   {
-	  //TIM8
+   //TIM8
     case 0:
     case 1:
     case 2:
@@ -101,7 +95,7 @@ u16 temp_u16;
         TIM8->PSC = 0;
     break;	    
 		
-	  //TIM3
+   //TIM3
     case 3:
     case 4:
     case 5:
@@ -121,7 +115,7 @@ u16 temp_u16;
         TIM3->PSC = 0;
     break;			
 		
-	  //TIM9
+    //TIM9
     case 7:
     case 8:
       pwm_period[2] = 1000;
@@ -139,7 +133,7 @@ u16 temp_u16;
         TIM9->PSC = 0;
     break;	 		
 		
-	  //TIM5
+    //TIM5
     case 9:
     case 10:
       pwm_period[3] = 1000;
@@ -157,7 +151,7 @@ u16 temp_u16;
         TIM5->PSC = 0;
     break;			
 						
-		//TIM4
+//TIM4
     case 11:  
       pwm_period[4] = 1000;
       if(pwm_frequency)
@@ -174,7 +168,7 @@ u16 temp_u16;
         TIM4->PSC = 0;
     break;
 		
-	  //TIM1
+//TIM1
     case 12:
     case 13:
     case 14:
