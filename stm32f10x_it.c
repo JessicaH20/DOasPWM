@@ -12,8 +12,8 @@ void TIM2_IRQHandler(void)
   {
     TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
     
-		switch(pwm_state)
-		{
+   switch(pwm_state)
+   {
      case ALL_LOW_STATE:
 
        if(pwm_new_duty_cycle_value_flag)
@@ -27,17 +27,16 @@ void TIM2_IRQHandler(void)
           }
         }
 				
-		 		for(i=0;i<12;i++)
+        for(i=0;i<12;i++)
         {
           if(pwm_buffered_high_value[i] < 1000)
-					  pwm_onoff[i] = 0;
-				  else
-					  pwm_onoff[i] = 1;
+	   pwm_onoff[i] = 0;
+	  else
+	   pwm_onoff[i] = 1;
         }
         
         pwm_on_high_length = (u16)(1000 - (u16)pwm_buffered_high_value_sort[0]);
-
-       
+        
           if(pwm_buffered_high_value_sort[11]==(int)1000)
            pwm_state = ALL_HIGH_STATE;
         
@@ -62,12 +61,10 @@ void TIM2_IRQHandler(void)
               }
             }
           }
-			break;
+	break;
       
       case HIGH_1ST_STATE:
-
-       
-			 for(i=0;i<12;i++)
+	 for(i=0;i<12;i++)
         {
           if(pwm_buffered_high_value[i] >= (u16)pwm_buffered_high_value_sort[pwm_state-1])
           {
@@ -111,7 +108,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			 break;
+	break;
       
        case HIGH_3RD_STATE:
          for(i=0;i<12;i++)
@@ -134,7 +131,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_4TH_STATE:
        	 for(i=0;i<12;i++)
@@ -157,7 +154,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_5TH_STATE:
         for(i=0;i<12;i++)
@@ -180,7 +177,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_6TH_STATE:
        	 for(i=0;i<12;i++)
@@ -203,7 +200,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_7TH_STATE:
        	 for(i=0;i<12;i++)
@@ -227,7 +224,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_8TH_STATE:
        	 for(i=0;i<12;i++)
@@ -250,7 +247,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_9TH_STATE:
         for(i=0;i<12;i++)
@@ -273,7 +270,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_10TH_STATE:
        	 for(i=0;i<12;i++)
@@ -296,7 +293,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_11TH_STATE:
        	 for(i=0;i<12;i++)
@@ -319,7 +316,7 @@ void TIM2_IRQHandler(void)
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
          }
-			break;
+	break;
       
       case HIGH_12TH_STATE:
        	 for(i=0;i<12;i++)
@@ -334,7 +331,7 @@ void TIM2_IRQHandler(void)
         
            TIM2->ARR = pwm_buffered_high_value_sort[pwm_state-1];
            pwm_state = ALL_LOW_STATE;
-			break;
+	break;
       
 
       case ALL_HIGH_STATE:
@@ -349,16 +346,16 @@ void TIM2_IRQHandler(void)
           }
         }
 
-				for(i=0;i<12;i++)
+	for(i=0;i<12;i++)
         {
           if(pwm_buffered_low_value[i])
-					  pwm_onoff[i] = 0;
-				  else
-					  pwm_onoff[i] = 1;
+	  pwm_onoff[i] = 0;
+	 else
+	  pwm_onoff[i] = 1;
         }
-			break; 
-		}
-		
+	break; 
+	}
+	
     for(i=0;i<12;i++)
     {
       switch(i)
